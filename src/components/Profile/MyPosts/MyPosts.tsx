@@ -2,7 +2,7 @@ import React from "react";
 import c from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
-const MyPosts = () => {
+const MyPosts = (props) => {
   return (
     <div>
       My posts
@@ -11,9 +11,7 @@ const MyPosts = () => {
         <button>Add post</button>
       </div>
       <div className={c.posts}>
-        <Post message="Hi!" />
-        {/*  <Post message="How are you!" />
-        <Post message="Hi!" /> */}
+        <Post message="Hi!" countLikes="25" />
       </div>
     </div>
   );
