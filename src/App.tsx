@@ -7,7 +7,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
 
 type Components = {
-  component: String;
+  component: Array<Components>;
 };
 
 const App = (props: Components) => {
@@ -17,8 +17,8 @@ const App = (props: Components) => {
         <Header />
         <Navbar />
         <div className="app-wrapper-content">
-          <Route path="/dialog" component={Dialogs} />
-          <Route path="/profile" component={Profile} />
+          <Route exact path="/dialogs" component={Dialogs} />
+          <Route exact path="/profile" component={Profile} />
         </div>
       </div>
     </BrowserRouter>
