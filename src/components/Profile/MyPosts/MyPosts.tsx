@@ -1,22 +1,19 @@
 import React from "react";
 import c from "./MyPosts.module.css";
+import Post from "./Post/Post";
+
 const MyPosts = () => {
   return (
-    <div className={c.content}>
+    <div>
+      My posts
       <div>
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMusc_3mN25tyiS62YmmJZG9HylhqOFWsKFQ&usqp=CAU"
-          alt="img_photo"
-        />
+        <textarea></textarea>
+        <button>Add post</button>
       </div>
-      <div>ava + description</div>
-      <div>
-        My posts
-        <div>New post</div>
-        <div className={c.posts}>
-          <div className={c.item}>post 1</div>
-          <div className={c.item}>post 2</div>
-        </div>
+      <div className={c.posts}>
+        <Post message="Hi!" />
+        {/*  <Post message="How are you!" />
+        <Post message="Hi!" /> */}
       </div>
     </div>
   );
