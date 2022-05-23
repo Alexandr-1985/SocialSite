@@ -8,6 +8,10 @@ const MyPosts = (props) => {
     { id: 2, message: "When are we do ", likesCount: 1 },
   ];
 
+  let postsElement = posts.map((p) => (
+    <Post message={p.message} likesCount={p.likesCount} />
+  ));
+
   return (
     <div className={c.postsBlock}>
       <h3> My posts</h3>
@@ -19,12 +23,7 @@ const MyPosts = (props) => {
           <button>Add post</button>
         </div>
       </div>
-      <div className={c.posts}>
-        <Post
-          message={postsData[0].message}
-          likesCount={postsData[0].likesCount}
-        />
-      </div>
+      <div className={c.posts}>{postsElement}</div>
     </div>
   );
 };
