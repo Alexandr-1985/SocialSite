@@ -26,4 +26,13 @@ let state = {
   sitebar: {},
 };
 
+export let addPost = (postMessage: any) => {
+  let newPost = {
+    id: 5,
+    message: postMessage,
+    countLikes: 0,
+  };
+  state.profilePage.posts.push(newPost);
+};
+
 export default state;

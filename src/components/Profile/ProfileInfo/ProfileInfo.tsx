@@ -1,7 +1,7 @@
 import React from "react";
 import c from "./ProfileInfo.module.css";
 
-const ProfileInfo = () => {
+const ProfileInfo = (props: any) => {
   return (
     <div>
       <div>
@@ -10,7 +10,7 @@ const ProfileInfo = () => {
           alt="img_photo"
         />
       </div>
-      <div className="c.descriptionBlock">ava + description</div>
+      <div className={c.descriptionBlock}>ava + description</div>
     </div>
   );
 };
