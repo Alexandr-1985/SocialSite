@@ -7,27 +7,28 @@ import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
 import { render } from "@testing-library/react";
 
-type Components = {
-  component: Array<Components>;
-};
-
-const App: React.FC<Components> = (props) => {
+const App = (props: {
+  state: {
+    dialogsPage: { dialogs: any[]; messages: any[] };
+    profilePage: { posts: string[] };
+  };
+}) => {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
-        <Navbar activeClassName={""} />
+        <Navbar />
         <div className="app-wrapper-content">
           <Route
             path="/dialogs"
             render={() => {
-              <Dialogs dialogs={props.dialogs} messages={props.messages} />;
+              <Dialogs state={props.state.dialogsPage} />;
             }}
           />
           <Route
             path="/profile"
             render={() => {
-              <Profile posts={props.posts} />;
+              <Profile state={props.state.profilePage} />;
             }}
           />
         </div>

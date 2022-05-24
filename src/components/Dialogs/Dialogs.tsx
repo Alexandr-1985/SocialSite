@@ -3,15 +3,11 @@ import DialogItem from "./DialogItem/DialogItem";
 import c from "./Dialogs.module.css";
 import Message from "./Message/Message";
 
-type ArrayType = {
-  dialogs: string[];
-  messages: string[];
-};
-const Dialogs: React.FC<ArrayType> = (props) => {
-  let dialogsElements = props.dialogs.map((d) => {
+const Dialogs = (props: { state: { dialogs: any[]; messages: any[] } }) => {
+  let dialogsElements = props.state.dialogs.map((d: { name: any; id: any }) => {
     <DialogItem name={d.name} id={d.id} />;
   });
-  let messagesElements = props.messages.map((m) => (
+  let messagesElements = props.state.messages.map((m: { message: string }) => (
     <Message message={m.message} />
   ));
 

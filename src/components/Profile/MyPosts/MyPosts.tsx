@@ -2,13 +2,12 @@ import React from "react";
 import c from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
-type ArrayType = {
-  posts: string[];
-};
-const MyPosts: React.FC<ArrayType> = (props) => {
-  let postsElement = props.posts.map((p) => (
-    <Post message={p.message} countLikes={p.countLikes} />
-  ));
+const MyPosts = (props: { posts: any[] }) => {
+  let postsElement = props.posts.map(
+    (p: { message: string; countLikes: number }) => (
+      <Post message={p.message} countLikes={p.countLikes} />
+    )
+  );
 
   return (
     <div className={c.postsBlock}>

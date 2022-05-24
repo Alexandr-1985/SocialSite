@@ -2,10 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import c from "./Navbar.module.css";
 
-type ProtoClassType = {
-  activeClassName: string;
-};
-const Navbar: React.FC<ProtoClassType> = (props) => {
+const Navbar = (props: any) => {
   return (
     <nav className={c.nav}>
       <div className={`${c.item} ${c.ative}`}>
