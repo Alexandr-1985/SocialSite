@@ -5,7 +5,7 @@ import c from "./Navbar.module.css";
 type ProtoClassType = {
   activeClassName: string;
 };
-const Navbar = (props: ProtoClassType) => {
+const Navbar: React.FC<ProtoClassType> = (props) => {
   return (
     <nav className={c.nav}>
       <div className={`${c.item} ${c.ative}`}>
