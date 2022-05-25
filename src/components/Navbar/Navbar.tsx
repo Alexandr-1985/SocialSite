@@ -6,27 +6,27 @@ const Navbar = (props: any) => {
   return (
     <nav className={c.nav}>
       <div className={`${c.item} ${c.ative}`}>
-        <NavLink to="/profile" activeClassName={c.activeLink}>
+        <NavLink to="/profile" className={c.activeLink}>
           Profile
         </NavLink>
       </div>
       <div className={c.item}>
-        <NavLink to="/dialogs" activeClassName={c.activeLink}>
+        <NavLink to="/dialogs" className={c.activeLink}>
           Messages
         </NavLink>
       </div>
       <div className={c.item}>
-        <NavLink to="/news" activeClassName={c.activeLink}>
+        <NavLink to="/news" className={c.activeLink}>
           News
         </NavLink>
       </div>
       <div className={c.item}>
-        <NavLink to="/music" activeClassName={c.activeLink}>
+        <NavLink to="/music" className={c.activeLink}>
           Music
         </NavLink>
       </div>
       <div className={c.item}>
-        <NavLink to="/setting" activeClassName={c.activeLink}>
+        <NavLink to="/setting" className={c.activeLink}>
           Settings
         </NavLink>
       </div>

@@ -1,3 +1,27 @@
+import { rerenderEntireTree } from "../index";
+
+export type PostType = { id: number; message: string; countLikes: number };
+
+export type PostsType = {
+  posts: Array<PostType>;
+};
+type DialogType = {
+  id: number;
+  name: string;
+};
+export type DialogsType = {
+  dialogs: Array<DialogType>;
+  messages: Array<MessageType>;
+};
+export type MessageType = {
+  id: number;
+  message: string;
+};
+
+export type StateType = {
+  profilePage: PostsType;
+  dialogsPage: DialogsType;
+};
 let state = {
   profilePage: {
     posts: [
@@ -23,16 +47,16 @@ let state = {
       { id: 6, message: "the" },
     ],
   },
-  sitebar: {},
 };
 
-export let addPost = (postMessage: any) => {
+export let addPost = (postMessage: string) => {
   let newPost = {
     id: 5,
     message: postMessage,
     countLikes: 0,
   };
   state.profilePage.posts.push(newPost);
+  rerenderEntireTree();
 };
 
 export default state;
