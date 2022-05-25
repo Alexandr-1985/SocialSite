@@ -10,14 +10,14 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
-export let rerenderEntireTree = (state) => {
+export let rerenderEntireTree = (state: any) => {
   root.render(
     <React.StrictMode>
       <BrowserRouter>
         <App
           state={store.getState()}
-          updateNewPostText={store.updateNewPostText}
-          addPost={store.addPost}
+          updateNewPostText={store.updateNewPostText.bind(store)}
+          addPost={store.addPost.bind(store)}
         />
       </BrowserRouter>
     </React.StrictMode>

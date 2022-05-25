@@ -6,7 +6,7 @@ import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
 import { render } from "@testing-library/react";
-import { StateType, addPost, updateNewPostText } from "./redux/state";
+import { StateType } from "./redux/state";
 type AppPropsType = {
   state: StateType;
   addPost: (message: string) => void;
