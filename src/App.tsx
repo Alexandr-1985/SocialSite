@@ -6,10 +6,11 @@ import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
 import { render } from "@testing-library/react";
-import { StateType, addPost } from "./redux/state";
+import { StateType, addPost, updateNewPostText } from "./redux/state";
 type AppPropsType = {
   state: StateType;
   addPost: (message: string) => void;
+  updateNewPostText: (message: string) => void;
 };
 const App = (props: AppPropsType) => {
   return (
@@ -29,6 +30,7 @@ const App = (props: AppPropsType) => {
               <Profile
                 addPost={props.addPost}
                 profilePage={props.state.profilePage}
+                updateNewPostText={props.updateNewPostText}
               />
             }
           />

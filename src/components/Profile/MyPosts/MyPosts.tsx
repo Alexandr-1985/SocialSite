@@ -5,6 +5,8 @@ import Post from "./Post/Post";
 type MyPostPropsType = {
   posts: Array<PostType>;
   addPost: (message: string) => void;
+  updateNewPostText: (message: string) => any;
+  newPostText: (message: string) => void;
 };
 const MyPosts = (props: MyPostPropsType) => {
   let postsElement = props.posts.map((p, index) => {
@@ -16,6 +18,12 @@ const MyPosts = (props: MyPostPropsType) => {
   let addPostHandler = () => {
     let text = newPostElement.current?.value;
     text && props.addPost(text);
+    //newPostElement.current!.value = " ";
+  };
+
+  let onPostChangeHandler = () => {
+    let text = newPostElement.current?.value;
+    text && props.updateNewPostText(text);
     newPostElement.current!.value = " ";
   };
 
@@ -24,7 +32,11 @@ const MyPosts = (props: MyPostPropsType) => {
       <h3> My posts</h3>
       <div>
         <div>
-          <textarea ref={newPostElement}></textarea>
+          <textarea
+            onChange={onPostChangeHandler}
+            ref={newPostElement}
+            value={props.newPostText}
+          />
         </div>
         <div>
           <button onClick={addPostHandler}>Add post</button>

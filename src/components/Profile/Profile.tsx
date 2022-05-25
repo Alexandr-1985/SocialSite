@@ -2,16 +2,23 @@ import React from "react";
 import MyPosts from "./MyPosts/MyPosts";
 import c from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import { addPost, PostsType } from "../../redux/state";
+import { addPost, PostsType, updateNewPostText } from "../../redux/state";
 type ProfilePropsType = {
   profilePage: PostsType;
   addPost: (message: string) => void;
+  newPostText: (message: string) => void;
+  updateNewPostText: (message: string) => void;
 };
 const Profile = (props: ProfilePropsType) => {
   return (
     <div>
       <ProfileInfo />
-      <MyPosts addPost={props.addPost} posts={props.profilePage.posts} />
+      <MyPosts
+        addPost={props.addPost}
+        newPostText={props.profilePage.newPostText}
+        updateNewPostText={props.updateNewPostText}
+        posts={props.profilePage.posts}
+      />
     </div>
   );
 };

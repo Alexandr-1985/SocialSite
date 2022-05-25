@@ -4,6 +4,7 @@ export type PostType = { id: number; message: string; countLikes: number };
 
 export type PostsType = {
   posts: Array<PostType>;
+  newPostText: string;
 };
 type DialogType = {
   id: number;
@@ -28,6 +29,7 @@ let state = {
       { id: 1, message: "how are you", countLikes: 12 },
       { id: 2, message: "When are we do ", countLikes: 1 },
     ],
+    newPostText: "new text in textarea",
   },
   dialogsPage: {
     dialogs: [
@@ -49,13 +51,19 @@ let state = {
   },
 };
 
-export let addPost = (postMessage: string) => {
+export let addPost = () => {
   let newPost = {
     id: 5,
-    message: postMessage,
+    message: state.profilePage.newPostText,
     countLikes: 0,
   };
   state.profilePage.posts.push(newPost);
+  state.profilePage.newPostText = "";
+  rerenderEntireTree();
+};
+
+export let updateNewPostText = (newText: string) => {
+  state.profilePage.newPostText = newText;
   rerenderEntireTree();
 };
 
