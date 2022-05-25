@@ -1,4 +1,4 @@
-import { rerenderEntireTree } from "../index";
+//import { rerenderEntireTree } from "../index";
 
 export type PostType = { id: number; message: string; countLikes: number };
 
@@ -29,7 +29,7 @@ let state = {
       { id: 1, message: "how are you", countLikes: 12 },
       { id: 2, message: "When are we do ", countLikes: 1 },
     ],
-    newPostText: "new text in textarea",
+    newPostText: "",
   },
   dialogsPage: {
     dialogs: [
@@ -51,7 +51,7 @@ let state = {
   },
 };
 
-export let addPost = () => {
+export const addPost = () => {
   let newPost = {
     id: 5,
     message: state.profilePage.newPostText,
@@ -62,9 +62,15 @@ export let addPost = () => {
   rerenderEntireTree();
 };
 
-export let updateNewPostText = (newText: string) => {
+export const updateNewPostText = (newText: string) => {
   state.profilePage.newPostText = newText;
   rerenderEntireTree();
+};
+
+let rerenderEntireTree = () => {};
+
+export const subscribe = (observer: any) => {
+  rerenderEntireTree = observer;
 };
 
 export default state;

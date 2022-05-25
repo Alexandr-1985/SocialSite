@@ -5,8 +5,8 @@ import Post from "./Post/Post";
 type MyPostPropsType = {
   posts: Array<PostType>;
   addPost: (message: string) => void;
-  updateNewPostText: (message: string) => any;
-  newPostText: (message: string) => void;
+  updateNewPostText: (message: string) => void;
+  newPostText: string;
 };
 const MyPosts = (props: MyPostPropsType) => {
   let postsElement = props.posts.map((p, index) => {

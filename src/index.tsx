@@ -5,7 +5,7 @@ import App from "./App";
 import state, { addPost } from "./redux/state";
 import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
-import { updateNewPostText } from "./redux/state";
+import { updateNewPostText, subscribe } from "./redux/state";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -25,6 +25,7 @@ export let rerenderEntireTree = () => {
   );
 };
 rerenderEntireTree();
+subscribe(rerenderEntireTree);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

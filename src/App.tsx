@@ -28,6 +28,7 @@ const App = (props: AppPropsType) => {
             path="/profile"
             element={
               <Profile
+                newPostText={props.state.profilePage.newPostText}
                 addPost={props.addPost}
                 profilePage={props.state.profilePage}
                 updateNewPostText={props.updateNewPostText}
