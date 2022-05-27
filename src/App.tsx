@@ -9,8 +9,7 @@ import { render } from "@testing-library/react";
 import { StateType } from "./redux/state";
 type AppPropsType = {
   state: StateType;
-  addPost: (message: string) => void;
-  updateNewPostText: (message: string) => void;
+  dispatch: (message: string) => void;
 };
 const App = (props: AppPropsType) => {
   return (
@@ -28,10 +27,8 @@ const App = (props: AppPropsType) => {
             path="/profile"
             element={
               <Profile
-                newPostText={props.state.profilePage.newPostText}
-                addPost={props.addPost}
                 profilePage={props.state.profilePage}
-                updateNewPostText={props.updateNewPostText}
+                dispatch={props.dispatch}
               />
             }
           />

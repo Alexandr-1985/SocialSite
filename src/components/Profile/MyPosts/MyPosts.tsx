@@ -4,9 +4,10 @@ import c from "./MyPosts.module.css";
 import Post from "./Post/Post";
 type MyPostPropsType = {
   posts: Array<PostType>;
-  addPost: (message: string) => void;
-  updateNewPostText: (message: string) => void;
+  //addPost: (message: string) => void;
+  dispatch: (message: string) => void;
   newPostText: string;
+  newVariableName: string;
 };
 const MyPosts = (props: MyPostPropsType) => {
   let postsElement = props.posts.map((p, index) => {
@@ -17,14 +18,15 @@ const MyPosts = (props: MyPostPropsType) => {
 
   let addPostHandler = () => {
     let text = newPostElement.current?.value;
-    text && props.addPost(text);
+    text && props.dispatch({ type: "ADD-POST", newText: text });
     //newPostElement.current!.value = " ";
   };
 
   let onPostChangeHandler = () => {
     let text = newPostElement.current?.value;
-    text && props.updateNewPostText(text);
-    newPostElement.current!.value = " ";
+    const newVariableName = { type: "UPDATE-NEW-POST-TEXT", newText: text };
+    text && props.dispatch(newVariableName);
+    //newPostElement.current!.value = " ";
   };
 
   return (

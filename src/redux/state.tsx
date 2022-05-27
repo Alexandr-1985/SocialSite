@@ -22,13 +22,18 @@ export type StateType = {
   dialogsPage: DialogsType;
 };
 
+export type dispatchActionType = {
+  type: string;
+};
+
 export type StoreType = {
   _state: StateType;
+  _callSubscriber: () => void;
   subscribe: () => void;
   getState: () => StateType;
-  addPost: () => void;
-  updateNewPostText: () => void;
-  _callSubscriber: () => void;
+  // addPost: () => void;
+  //updateNewPostText: () => void;
+  dispatch: (message: string) => void;
 };
 
 const store = {
@@ -59,29 +64,31 @@ const store = {
       ],
     },
   },
-  getState() {
-    return this._state;
-  },
   _callSubscriber() {
     console.log("data changed");
   },
-  addPost() {
-    let newPost = {
-      id: 5,
-      message: this._state.profilePage.newPostText,
-      countLikes: 0,
-    };
-    this._state.profilePage.posts.push(newPost);
-    this._state.profilePage.newPostText = "";
+  getState() {
+    return this._state;
   },
-  updateNewPostText(newText: string) {
-    this._state.profilePage.newPostText = newText;
-  },
-
   subscribe(observer: any) {
     this._callSubscriber = observer;
   },
+
+  dispatch(action: any) {
+    if (action.type === "ADD-POST") {
+      let newPost = {
+        id: 5,
+        message: this._state.profilePage.newPostText,
+        countLikes: 0,
+      };
+      this._state.profilePage.posts.push(newPost);
+      this._state.profilePage.newPostText = "";
+      //this._callSubscriber(this._state);
+    } else if (action.addPost === "UPDATE-NEW-POST-TEXT") {
+      this._state.profilePage.newPostText = action.newText;
+      //this._callSubscriber(this._state);
+    }
+  },
 };
 
-//rerenderEntireTree() {};
 export default store;
