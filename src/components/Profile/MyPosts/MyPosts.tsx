@@ -1,5 +1,10 @@
 import React, { createRef } from "react";
-import { PostsType, PostType } from "../../../redux/state";
+import {
+  addPostActionCreator,
+  PostsType,
+  PostType,
+  updateNewPosTextActionCreator,
+} from "../../../redux/state";
 import c from "./MyPosts.module.css";
 import Post from "./Post/Post";
 type MyPostPropsType = {
@@ -9,6 +14,7 @@ type MyPostPropsType = {
   newPostText: string;
   newVariableName: string;
 };
+
 const MyPosts = (props: MyPostPropsType) => {
   let postsElement = props.posts.map((p, index) => {
     return <Post message={p.message} countLikes={p.countLikes} key={index} />;
@@ -18,13 +24,14 @@ const MyPosts = (props: MyPostPropsType) => {
 
   let addPostHandler = () => {
     let text = newPostElement.current?.value;
-    text && props.dispatch({ type: "ADD-POST", newText: text });
+    const newVariableName = addPostActionCreator();
+    text && props.dispatch(newVariableName);
     //newPostElement.current!.value = " ";
   };
 
   let onPostChangeHandler = () => {
     let text = newPostElement.current?.value;
-    const newVariableName = { type: "UPDATE-NEW-POST-TEXT", newText: text };
+    const newVariableName = updateNewPosTextActionCreator(text);
     text && props.dispatch(newVariableName);
     //newPostElement.current!.value = " ";
   };
