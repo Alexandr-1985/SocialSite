@@ -10,9 +10,9 @@ import Post from "./Post/Post";
 type MyPostPropsType = {
   posts: Array<PostType>;
   //addPost: (message: string) => void;
-  dispatch: (message: string) => void;
+  dispatch: Function;
   newPostText: string;
-  newVariableName: string;
+  // newVariableName: string;
 };
 
 const MyPosts = (props: MyPostPropsType) => {
@@ -24,6 +24,7 @@ const MyPosts = (props: MyPostPropsType) => {
 
   let addPostHandler = () => {
     let text = newPostElement.current?.value;
+
     const newVariableName = addPostActionCreator();
     text && props.dispatch(newVariableName);
     //newPostElement.current!.value = " ";
@@ -31,8 +32,12 @@ const MyPosts = (props: MyPostPropsType) => {
 
   let onPostChangeHandler = () => {
     let text = newPostElement.current?.value;
-    const newVariableName = updateNewPosTextActionCreator(text);
-    text && props.dispatch(newVariableName);
+    if (text) {
+      const newVariableName = updateNewPosTextActionCreator(text);
+      props.dispatch(newVariableName);
+    }
+
+    // text && props.dispatch(newVariableName);
     //newPostElement.current!.value = " ";
   };
 
@@ -41,11 +46,7 @@ const MyPosts = (props: MyPostPropsType) => {
       <h3> My posts</h3>
       <div>
         <div>
-          <textarea
-            onChange={onPostChangeHandler}
-            ref={newPostElement}
-            value={props.newPostText}
-          />
+          <textarea onChange={onPostChangeHandler} ref={newPostElement} />
         </div>
         <div>
           <button onClick={addPostHandler}>Add post</button>

@@ -5,8 +5,7 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import { PostsType } from "../../redux/state";
 type ProfilePropsType = {
   profilePage: PostsType;
-  newPostText: (message: string) => void;
-  dispatch: (message: string) => void;
+  dispatch: any;
 };
 const Profile = (props: ProfilePropsType) => {
   return (
