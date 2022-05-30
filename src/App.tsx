@@ -6,7 +6,7 @@ import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
 import { render } from "@testing-library/react";
-import { StateType, StoreType } from "./redux/state";
+import { StateType, StoreType } from "./redux/store";
 type AppPropsType = {
   state: StateType;
   dispatch: Function;
