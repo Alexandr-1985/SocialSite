@@ -1,15 +1,17 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Dialogs from "./components/Dialogs/Dialogs";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
-import { render } from "@testing-library/react";
 import { StateType, StoreType } from "./redux/store";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
+//import store from "./redux/redux-store";
+
 type AppPropsType = {
   state: StateType;
   dispatch: Function;
+  store: [];
 };
 const App = (props: AppPropsType) => {
   return (
@@ -20,23 +22,9 @@ const App = (props: AppPropsType) => {
         <Routes>
           <Route
             path="/dialogs"
-            element={
-              <Dialogs
-                // newMessageBody={props.state.dialogsPage.newMessageBody}
-                dispatch={props.dispatch}
-                dialogsPage={props.state.dialogsPage}
-              />
-            }
+            element={<DialogsContainer store={props.store} />}
           />
-          <Route
-            path="/profile"
-            element={
-              <Profile
-                profilePage={props.state.profilePage}
-                dispatch={props.dispatch}
-              />
-            }
-          />
+          <Route path="/profile" element={<Profile store={props.store} />} />
         </Routes>
       </div>
     </div>
