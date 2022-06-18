@@ -11,7 +11,7 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 type AppPropsType = {
   state: StateType;
   dispatch: Function;
-  store: [];
+  store: Array<string>;
 };
 const App = (props: AppPropsType) => {
   return (
