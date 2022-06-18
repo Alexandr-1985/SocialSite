@@ -1,10 +1,11 @@
 import React, { ChangeEvent, ChangeEventHandler } from "react";
+import { connect } from "react-redux";
 import {
   sendMessageCreator,
   updateNewMessageBodyCreator,
 } from "../../redux/dialogsReducer";
 import { DialogsType } from "../../redux/store";
-import StoreContext from "../../StoreContext";
+//import StoreContext from "../../StoreContext";
 import Dialogs from "./Dialogs";
 
 type dialogsPagePropsType = {
@@ -14,7 +15,7 @@ type dialogsPagePropsType = {
   // sendMessageCreator: () => void;
   //updateNewMessageBodyCreator: (body: string) => void;
 };
-const DialogsContainer = (props: dialogsPagePropsType) => {
+/*const DialogsContainer = (props: dialogsPagePropsType) => {
   return (
     <StoreContext.Consumer>
       {(store) => {
@@ -38,6 +39,24 @@ const DialogsContainer = (props: dialogsPagePropsType) => {
       ;
     </StoreContext.Consumer>
   );
+};*/
+
+let mapStateToProps = (state) => {
+  return {
+    dialogsPage: state.dialogsPage,
+  };
 };
+let mapDispatchToProps = (dispatch) => {
+  return {
+    updateNewMessageBody: (body) => {
+      dispatch(updateNewMessageBodyCreator(body.currentTarget.value));
+    },
+    sendMessage: () => {
+      dispatch(sendMessageCreator());
+    },
+  };
+};
+
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
 
 export default DialogsContainer;

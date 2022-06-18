@@ -1,10 +1,11 @@
-import { createRef } from "react";
+//import { createRef } from "react";
+import { connect } from "react-redux";
 import {
   addPostActionCreator,
   updateNewPostTextActionCreator,
 } from "../../../redux/profileReducer";
 import { PostType } from "../../../redux/store";
-import StoreConext from "../../../StoreContext";
+//import StoreConext from "../../../StoreContext";
 import MyPosts from "./MyPosts";
 
 type MyPostPropsType = {
@@ -16,7 +17,7 @@ type MyPostPropsType = {
   store: Array<String>;
 };
 
-const MyPostsContainer = (props: MyPostPropsType) => {
+/*const MyvPostsContainer = (props: MyPostPropsType) => {
   return (
     <StoreConext.Consumer>
       {(store) => {
@@ -48,6 +49,31 @@ const MyPostsContainer = (props: MyPostPropsType) => {
       }}
     </StoreConext.Consumer>
   );
+};*/
+
+let mapStateToProps = (state: any) => {
+return {
+  posts: state.profilePage.posts,
+  newPostText: state.profilePage.newPostText
+}
+}
+
+let mapDispatchToProps = (dispatch: any) => {
+ return 
+ {
+  updateNewPostText: (text)=>{
+    if (text) {
+      const newVariableName = updateNewPostTextActionCreator(text);
+      dispatch(newVariableName);
+  }
+}, 
+addPost: () => {
+  //let text = newPostElement.current?.value;
+  const newVariableName = addPostActionCreator();
+  text && dispatch(newVariableName);
+}
 };
+
+const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
 
 export default MyPostsContainer;

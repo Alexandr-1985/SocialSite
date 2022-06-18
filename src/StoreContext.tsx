@@ -1,17 +1,17 @@
-import React from "react";
+// import React from "react";
 
-const PropsStoreContextProvider{
-  
-}
+// const PropsStoreContextProvider{
 
-const StoreConext = React.createContext(null);
+// }
 
-export const Provider = (props: PropsStoreContextProvider) => {
-  return (
-    <StoreConext.Provider value={props.store}>
-      {props.children}
-    </StoreConext.Provider>
-  );
-};
+// const StoreConext = React.createContext(null);
 
-export default StoreConext;
+// export const Provider = (props: PropsStoreContextProvider) => {
+//   return (
+//     <StoreConext.Provider value={props.store}>
+//       {props.children}
+//     </StoreConext.Provider>
+//   );
+// };
+
+// export default StoreConext;
