@@ -5,13 +5,13 @@ import store from "../../redux/redux-store";
 type ProfilePropsType = {
   // profilePage: PostsType;
   // dispatch: any;
-  store: [];
+  store: Array<String>;
 };
 const Profile = (props: ProfilePropsType) => {
   return (
     <div>
       <ProfileInfo />
-      <MyPostsContainer store={props.store} />
+      <MyPostsContainer />
     </div>
   );
 };
